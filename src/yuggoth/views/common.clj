@@ -27,12 +27,14 @@
 (defn sidebar []
   [:div.sidebar
    [:h2 "Recent posts"]
-   (into [:ul]
-         (for [{:keys [id time title]} (reverse (sort-by :time (db/get-posts 10)))]
-           [:li 
-            (link-to (str "/blog/" id)
-                     title
-                     [:div.date (util/format-time time)])]))])
+   (-> [:ul]
+     (into 
+       (for [{:keys [id time title]} (reverse (sort-by :time (db/get-posts 5)))]
+         [:li 
+          (link-to (str "/blog/" id)
+                   title
+                   [:div.date (util/format-time time)])]))
+     (conj [:li (link-to "/archives" "more...")]))])
 
 (defn footer []
   [:div.footer
