@@ -24,17 +24,23 @@
       [:li#archives (link-to "/archives" "Archives")]
       [:li#home (link-to "/" "Home")]])])
 
-(defn sidebar []
-  [:div.sidebar
-   [:h2 "Recent posts"]
-   (-> [:ul]
-     (into 
-       (for [{:keys [id time title]} (reverse (sort-by :time (db/get-posts 5)))]
-         [:li 
-          (link-to (str "/blog/" id)
-                   title
-                   [:div.date (util/format-time time)])]))
-     (conj [:li (link-to "/archives" "more...")]))])
+(defn sidebar [post?]
+  (if post?
+
+    [:div.sidebar-preview
+     [:h2 "Preview"]     
+     [:div#post-preview]]
+    
+    [:div.sidebar
+     [:h2 "Recent posts"]
+     (-> [:ul]
+       (into 
+         (for [{:keys [id time title]} (reverse (sort-by :time (db/get-posts 5)))]
+           [:li 
+            (link-to (str "/blog/" id)
+                     title
+                     [:div.date (util/format-time time)])]))
+       (conj [:li (link-to "/archives" "more...")]))]))
 
 (defn footer []
   [:div.footer
@@ -52,7 +58,8 @@
        [:title html-title]
        (include-css (util/get-css)
                     "/css/jquery.alerts.css")
-       (include-js "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+       (include-js "js/markdown.js" 
+                   "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
                    "/js/jquery.alerts.js"
                    "/js/site.js")]      
       [:body
@@ -69,5 +76,5 @@
          [:div.post
           [:div.entry-title [:h2 html-title title-elements]]
           [:div.entry-content content]]
-         (sidebar)]          
+         (sidebar (or (= "New post" html-title) (= "Edit post" html-title)))]          
         (footer)]])))
