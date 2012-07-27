@@ -24,8 +24,8 @@
       [:li#archives (link-to "/archives" "Archives")]
       [:li#home (link-to "/" "Home")]])])
 
-(defn sidebar [post?]
-  (if post?    
+(defn sidebar [title]
+  (if (or (= "New post" title) (= "Edit post" title))    
     [:div.sidebar-preview
      [:h2 "Preview"]     
      [:div#post-preview]]
@@ -75,5 +75,5 @@
          [:div.post
           [:div.entry-title [:h2 html-title title-elements]]
           [:div.entry-content content]]
-         (sidebar (or (= "New post" html-title) (= "Edit post" html-title)))]          
+         (sidebar html-title)]          
         (footer)]])))
