@@ -27,7 +27,7 @@
 (defn sidebar [title]
   (if (or (= "New post" title) (= "Edit post" title))    
     [:div.sidebar-preview
-     [:h2 "Preview"]     
+     [:h2 [:span.render-preview "Preview (click to redraw)"]]
      [:div#post-preview]]
     
     [:div.sidebar
