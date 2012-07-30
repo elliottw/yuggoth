@@ -56,11 +56,7 @@
       [:head
        [:title html-title]
        (include-css (util/get-css)
-                    "/css/jquery.alerts.css")
-       (include-js "/js/markdown.js"
-                   "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-                   "/js/jquery.alerts.js"
-                   "/js/site.js")]      
+                    "/css/jquery.alerts.css")]      
       [:body
        (hidden-field "selected" 
                      (condp = html-title
@@ -76,4 +72,8 @@
           [:div.entry-title [:h2 html-title title-elements]]
           [:div.entry-content content]]
          (sidebar html-title)]          
-        (footer)]])))
+        (footer)]
+       (include-js "/js/markdown.js"
+                   "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+                   "/js/jquery.alerts.js"
+                   "/js/site.js")])))
