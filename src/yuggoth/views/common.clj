@@ -20,7 +20,8 @@
         [:li (link-to "/upload" "upload")]
         [:li#new-post (link-to "/make-post" "New post")]]
        [:ul.menu-items])     
-     [[:li#about (link-to "/about" "About")]
+     [[:li#rss (link-to "/rss" "rss")]
+      [:li#about (link-to "/about" "About")]      
       [:li#archives (link-to "/archives" "Archives")]
       [:li#home (link-to "/" "Home")]])])
 
@@ -31,8 +32,8 @@
      [:div#post-preview]]
     
     [:div.sidebar
-     [:h2 "Recent posts"]
-     (-> [:ul]
+     [:h2 "Recent posts"]     
+     (-> [:ul]       
        (into 
          (for [{:keys [id time title]} (reverse (sort-by :time (db/get-posts 5)))]
            [:li 
