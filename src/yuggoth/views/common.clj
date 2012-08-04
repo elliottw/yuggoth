@@ -20,7 +20,7 @@
         [:li (link-to "/upload" "upload")]
         [:li#new-post (link-to "/make-post" "New post")]]
        [:ul.menu-items])     
-     [[:li#rss (link-to "/rss" "rss")]
+     [[:li#rss (link-to "/rss" [:div#rss "rss"] (image "/img/rss.jpg"))]      
       [:li#about (link-to "/about" "About")]      
       [:li#archives (link-to "/archives" "Archives")]
       [:li#home (link-to "/" "Home")]])])
