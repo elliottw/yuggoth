@@ -60,9 +60,10 @@
                     "/css/jquery.alerts.css")]      
       [:body
        (hidden-field "selected" 
-                     (condp = html-title
+                     (condp = (first (.split html-title " "))
                        "Archives" "#archives"
                        "Login" "#login"
+                       "About" "#about"
                        "New post" "#new-post"
                        "#home"))
        [:div.container
