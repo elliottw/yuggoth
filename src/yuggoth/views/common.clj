@@ -18,6 +18,7 @@
         [:li (link-to "/logout" "logout")]
         [:li (link-to "/profile" "profile")]
         [:li (link-to "/upload" "upload")]
+        [:li#latest (link-to "/latest-comments" "latest comments")]
         [:li#new-post (link-to "/make-post" "New post")]]
        [:ul.menu-items])     
      [[:li#rss (link-to "/rss" [:div#rss "rss"] (image "/img/rss.jpg"))]      
@@ -62,9 +63,10 @@
        (hidden-field "selected" 
                      (condp = (first (.split html-title " "))
                        "Archives" "#archives"
-                       "Login" "#login"
-                       "About" "#about"
-                       "New post" "#new-post"
+                       "Latest"   "#latest"
+                       "Login"    "#login"
+                       "About"    "#about"
+                       "New"      "#new-post"
                        "#home"))
        [:div.container
         (header)
