@@ -56,6 +56,7 @@
         title-elements (when (map? title) (:elements title))]        
     (html5
       [:head
+       [:link {:rel "alternate" :type "application/rss+xml" :title (:title (db/get-admin)) :href "/rss"}]
        [:title html-title]
        (include-css (util/get-css)
                     "/css/jquery.alerts.css")]      
