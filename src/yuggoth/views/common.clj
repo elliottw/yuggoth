@@ -1,5 +1,5 @@
 (ns yuggoth.views.common
-  (:use hiccup.element hiccup.form
+  (:use hiccup.element hiccup.form hiccup.util
         [noir.core]
         [noir.validation :as vali]        
         [hiccup.page :only [include-css include-js html5]])
@@ -38,7 +38,7 @@
        (into 
          (for [{:keys [id time title]} (reverse (sort-by :time (db/get-posts 5)))]
            [:li 
-            (link-to (str "/blog/" id)
+            (link-to (str "/blog/" (str id "-" (url-encode title)))
                      title
                      [:div.date (util/format-time time)])]))
        (conj [:li (link-to "/archives" "more...")]))]))
