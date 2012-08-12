@@ -86,5 +86,5 @@
         (footer)]
        (include-js "/js/markdown.js"
                    "http://code.jquery.com/jquery-1.8.0.min.js"                       
-                   "/js/jquery.alerts.js"
+                   "/js/jquery.alerts.js"                   
                    "/js/site.js")])))
