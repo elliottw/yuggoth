@@ -10,6 +10,11 @@
 (defn header []
   [:div.header [:h1 [:div.site-title  (:title (db/get-admin))]]])
 
+(defn tag-list []
+  (into [:p.taglist] 
+        (for [tag (db/tags)]
+          [:div.tag (link-to (str "/tag/" tag) [:span.tagon tag])])))
+
 (defn menu []
   [:div.menu 
    (into
@@ -41,7 +46,8 @@
             (link-to (str "/blog/" (str id "-" (url-encode title)))
                      title
                      [:div.date (util/format-time time)])]))
-       (conj [:li (link-to "/archives" "more...")]))]))
+       (conj [:li (link-to "/archives" "more...")]))
+     (tag-list)]))
 
 (defn footer []
   [:div.footer
