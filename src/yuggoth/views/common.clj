@@ -65,7 +65,8 @@
        [:link {:rel "alternate" :type "application/rss+xml" :title (:title (db/get-admin)) :href "/rss"}]
        [:title html-title]
        (include-css (util/get-css)
-                    "/css/jquery.alerts.css")]      
+                    "/css/jquery.alerts.css"
+                    "/css/shCoreYuggoth.css")]      
       [:body
        (hidden-field "selected" 
                      (condp = (first (.split html-title " "))
@@ -86,5 +87,13 @@
         (footer)]
        (include-js "/js/markdown.js"
                    "http://code.jquery.com/jquery-1.8.0.min.js"                       
-                   "/js/jquery.alerts.js"                   
+                   "/js/jquery.alerts.js"         
+                   "/js/shCore.js"
+                   "/js/brushes/shBrushClojure.js"
+                   "/js/brushes/shBrushBash.js"
+                   "/js/brushes/shBrushCss.js"
+                   "/js/brushes/shBrushJava.js"
+                   "/js/brushes/shBrushJScript.js"
+                   "/js/brushes/shBrushPlain.js"
+                   "/js/brushes/shBrushXml.js"
                    "/js/site.js")])))
