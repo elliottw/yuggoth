@@ -86,7 +86,7 @@
          (sidebar html-title)]          
         (footer)]
        (include-js "/js/markdown.js"
-                   "http://code.jquery.com/jquery-1.8.0.min.js"                       
+                   "//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"                       
                    "/js/jquery.alerts.js"         
                    "/js/shCore.js"
                    "/js/brushes/shBrushClojure.js"
